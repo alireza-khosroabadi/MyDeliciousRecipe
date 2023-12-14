@@ -42,11 +42,10 @@ class RecipesHomeActivity : ComponentActivity() {
         val mainViewModel: RecipesHomeViewModel by viewModels()
 
         // add it before setContent
-        installSplashScreen().apply {
+        installSplashScreen().
             setKeepOnScreenCondition {
                 mainViewModel.loading.value
             }
-        }
 
         setContent {
 

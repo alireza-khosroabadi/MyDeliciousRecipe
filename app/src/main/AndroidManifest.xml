@@ -10,14 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyDeliciousRecipe.First"
+        android:theme="@style/Theme.Recipe.Splash"
         android:name=".application.RecipesApplication"
         tools:targetApi="31">
         <activity
             android:name=".RecipesHomeActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyDeliciousRecipe.First">
+            android:theme="@style/Theme.Recipe.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

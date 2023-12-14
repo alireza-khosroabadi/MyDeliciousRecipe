@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.MyDeliciousRecipe" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Allows us to override night specific attributes in the
+            values-night folder. -->
+    <style name="NightAdjusted.Theme.Recipe" parent="android:Theme.Material.Light.NoActionBar" />
 
-    <style name="Theme.Splash.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">
-            @drawable/splash_screen_background
-        </item>
-        <item name="windowSplashScreenAnimatedIcon">
-            @drawable/ic_avatar
-        </item>
-        <item name="windowSplashScreenAnimationDuration">
-            @integer/splash_screen_animation_duration
-        </item>
-        <item name="postSplashScreenTheme">
-            @style/Theme.MyDeliciousRecipe.First
-        </item>
-        <!--Android 12 specific styles (put this in values-v31) -->
-<!--        <item name="android:windowSplashScreenBrandingImage">-->
-<!--            @drawable/ic_brand_icon-->
-<!--        </item>-->
-        <!--Android 12 specific styles (put this in values-v31) -->
+    <!-- The final theme we use -->
+    <style name="Theme.Recipe" parent="NightAdjusted.Theme.Recipe" />
+    <style name="NightAdjusted.Theme.Splash" parent="Theme.SplashScreen">
+        <item name="android:windowLightStatusBar" >true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
     </style>
 
-    <style name="Theme.MyDeliciousRecipe.First">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="Theme.Recipe.Splash" parent="NightAdjusted.Theme.Splash">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_avatar</item>
+        <item name="postSplashScreenTheme">@style/Theme.Recipe</item>
+        <item name="windowSplashScreenAnimationDuration">600</item>
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+        <item name="windowSplashScreenBackground">@drawable/splash_screen_background</item>
     </style>
-
-    <style name="Theme.AndroidSplashScreen.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.AndroidSplashScreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
