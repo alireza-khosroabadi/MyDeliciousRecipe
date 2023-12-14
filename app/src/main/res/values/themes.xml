@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MyDeliciousRecipe" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Splash.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">
+            @drawable/splash_screen_background
+        </item>
+        <item name="windowSplashScreenAnimatedIcon">
+            @drawable/ic_avatar
+        </item>
+        <item name="windowSplashScreenAnimationDuration">
+            @integer/splash_screen_animation_duration
+        </item>
+        <item name="postSplashScreenTheme">
+            @style/Theme.MyDeliciousRecipe.First
+        </item>
+        <!--Android 12 specific styles (put this in values-v31) -->
+<!--        <item name="android:windowSplashScreenBrandingImage">-->
+<!--            @drawable/ic_brand_icon-->
+<!--        </item>-->
+        <!--Android 12 specific styles (put this in values-v31) -->
+    </style>
+
+    <style name="Theme.MyDeliciousRecipe.First">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AndroidSplashScreen.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.AndroidSplashScreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
