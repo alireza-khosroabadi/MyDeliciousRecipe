@@ -11,9 +11,9 @@ plugins {
 android {
     namespace = "com.delicious.network"
 
-//    buildFeatures {
-//        buildConfig = true
-//    }
+    buildFeatures {
+        buildConfig = true
+    }
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
@@ -36,11 +36,11 @@ dependencies {
 
     libs.apply {
         implementation(kotlinx.datetime)
-        implementation(kotlinx.serialization.json)
+        api(kotlinx.serialization.json)
         implementation(logging.interceptor)
-        implementation(retrofit)
+        api(retrofit)
         implementation(chucker)
-        implementation(retrofit.kotlin.serialization)
+        api(retrofit.kotlin.serialization)
 
         testImplementation(junit)
         androidTestImplementation(junit.ext)

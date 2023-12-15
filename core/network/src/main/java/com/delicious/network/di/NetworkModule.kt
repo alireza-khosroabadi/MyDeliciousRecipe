@@ -1,9 +1,10 @@
 package com.delicious.network.di
 
 import android.app.Application
+import com.delicious.network.BuildConfig
+import com.delicious.network.interceptor.ApiKeyQueryParamInterceptor
 import com.delicious.network.interceptor.ForceCacheInterceptor
 import com.delicious.network.interceptor.HttpCacheInterceptor
-import com.delicious.network.interceptor.RequestHeaderInterceptor
 import com.delicious.network.utils.NetworkConnection
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -108,6 +109,6 @@ object NetworkModule {
     @Singleton
     @OkHttpAddApiKeyHeaderInterceptor
     fun provideAddApiKeyHeaderInterceptor(): Interceptor =
-        RequestHeaderInterceptor()
+        ApiKeyQueryParamInterceptor()
 
 }

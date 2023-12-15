@@ -4,6 +4,7 @@ plugins {
     libs.plugins.recipes.android.apply {
         alias(library)
         alias(library.compose)
+        alias(hilt)
     }
 }
 
