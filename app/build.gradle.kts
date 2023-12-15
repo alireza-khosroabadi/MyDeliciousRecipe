@@ -38,6 +38,7 @@ dependencies {
             implementation(utility)
             implementation(systemdesign)
             implementation(ui)
+            implementation(di)
         }
         implementation(home.homeUi)
     }

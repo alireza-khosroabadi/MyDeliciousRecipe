@@ -1,4 +1,4 @@
-package com.delicious.homeData.di
+package com.delicious.di.home
 
 import com.delicious.homeData.apiService.HomeApiService
 import com.delicious.homeData.repository.homeRepository.DefaultHomeRepository
@@ -8,11 +8,11 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-//@Module
-//@InstallIn(SingletonComponent::class)
-//object HomeRepositoryModule {
-//
-//    @Provides
-//    fun bindHomeRepository(apiService: HomeApiService): HomeRepository =
-//        DefaultHomeRepository(apiService)
-//}
+@Module
+@InstallIn(SingletonComponent::class)
+object HomeRepositoryModule {
+
+    @Provides
+    fun bindHomeRepository(apiService: HomeApiService): HomeRepository =
+        DefaultHomeRepository(apiService)
+}
