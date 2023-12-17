@@ -2,6 +2,7 @@ package com.delicious.network.di
 
 import android.app.Application
 import com.delicious.network.BuildConfig
+import com.delicious.network.callAdapter.NetworkResponseAdapterFactory
 import com.delicious.network.interceptor.ApiKeyQueryParamInterceptor
 import com.delicious.network.interceptor.ForceCacheInterceptor
 import com.delicious.network.interceptor.HttpCacheInterceptor
@@ -60,6 +61,7 @@ object NetworkModule {
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
 
         return builder.build()
     }

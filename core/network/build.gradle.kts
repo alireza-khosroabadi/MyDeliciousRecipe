@@ -30,7 +30,7 @@ secrets {
 dependencies {
 
     with(projects) {
-//        implementation(core.k)
+        implementation(core.base)
 //        implementation(core.common)
     }
 
