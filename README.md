@@ -19,7 +19,6 @@ The project follows the Clean Architecture pattern, promoting modularity, scalab
 
 ### Feature Directories
 - **home:** Represents a feature module with sub-modules for UI, domain logic, data, and dependency injection related to the home feature.
-- **contacts:** Similar to the home module, encapsulating the contacts feature.
 
 ### Home Feature Module Structure
 
@@ -29,7 +28,7 @@ In the context of your Android project's structure, the "home" directory represe
     - This module is responsible for handling the User Interface (UI) components related to the "home" feature. It includes activities, fragments, layouts, and any other UI-related code specific to the home screen.
 
 2. **home-domain:**
-    - The "domain" module contains the business logic and rules specific to the "home" feature. It encapsulates the use cases, business rules, repositories interface and any domain-related logic without being concerned about the implementation details.
+    - The "domain" module contains the business logic and rules specific to the "home" feature. It encapsulates the use cases, business rules, and any domain-related logic without being concerned about the implementation details.
 
 3. **home-data:**
     - This module deals with data-related operations for the "home" feature. It includes data sources, repositories implementation, and any data-related logic needed to retrieve or manipulate data for the "home" screen.

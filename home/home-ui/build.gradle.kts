@@ -16,7 +16,9 @@ android {
 
 dependencies {
     projects.apply {
-//        implementation(home.homeDomain)
+        implementation(home.homeDomain)
+        implementation(home.homeDi)
+        implementation(core.base)
         core.apply {
             implementation(utility)
             implementation(systemdesign)
