@@ -56,6 +56,7 @@ retrofit = "2.9.0"
 loggingInterceptor = "4.12.0"
 chucker = "3.5.2"
 kotlinx-serialization-converter = "1.0.0"
+gson-converter = "2.9.0"
 
 room = "2.6.1"
 
@@ -68,6 +69,8 @@ espresso-core = "3.5.1"
 appcompat = "1.6.1"
 material = "1.11.0"
 
+truth = "1.1.4"
+mockito = "5.1.0"
 turbine = "1.0.0"
 secrets = "2.0.1"
 org-jetbrains-kotlin-jvm = "1.9.10"
@@ -144,6 +147,7 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "kotlinx-serialization-converter" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
+gson-converter = {group = "com.squareup.retrofit2" , name = "converter-gson" , version.ref = "gson-converter"}
 
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
@@ -174,6 +178,9 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-animation-android = { group = "androidx.compose.animation", name = "animation-android", version.ref = "animationAndroid" }
 androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigationCommonKtx" }
 
+mockito = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito"}
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth"}
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -202,3 +209,12 @@ recipes-android-room = { id = "recipes.android.room", version = "unspecified" }
 recipes-android-detekt = { id = "recipes.android.detekt", version = "unspecified" }
 recipes-android-ktlint = { id = "recipes.android.ktlint", version = "unspecified" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
+
+
+[bundles]
+test = [
+    "junit",
+    "kotlinx-coroutines-test",
+    "turbine",
+    "mockito",
+    "truth",]

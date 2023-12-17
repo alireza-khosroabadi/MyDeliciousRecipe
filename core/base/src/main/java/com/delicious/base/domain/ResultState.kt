@@ -14,12 +14,12 @@ sealed class ResultState<out T> {
     /**
      * Contains an error if it's a failure.
      */
-    data class Failure(val error: String) : ResultState<Nothing>()
+    data class Failure(val code: Int, val error: String) : ResultState<Nothing>()
 
     /**
      * Contains an error if it's a failure.
      */
-    data class Exception(val error: kotlin.Exception) : ResultState<Nothing>()
+    data class Exception(val error: Throwable) : ResultState<Nothing>()
 
     /**
      * True if the result is a success, false otherwise.
