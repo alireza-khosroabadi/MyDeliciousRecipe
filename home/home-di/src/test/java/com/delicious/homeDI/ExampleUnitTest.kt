@@ -1,4 +1,4 @@
-package com.delicious.di
+package com.delicious.homeDI
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.delicious.di.home
+package com.delicious.homeDI
 
 import com.delicious.homeData.apiService.HomeApiService
 import com.delicious.homeData.repository.homeRepository.DefaultHomeRepository

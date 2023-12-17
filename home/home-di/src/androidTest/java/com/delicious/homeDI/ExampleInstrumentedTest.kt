@@ -1,4 +1,4 @@
-package com.delicious.di
+package com.delicious.homeDI
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.delicious.di.test", appContext.packageName)
+        assertEquals("com.delicious.homeDI.test", appContext.packageName)
     }
 }

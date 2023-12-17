@@ -98,7 +98,6 @@ fun RecipesTheme(
 
     // Composition locals
     CompositionLocalProvider(
-        LocalLayoutDirection provides LayoutDirection.Rtl,
         LocalBackgroundTheme provides backgroundTheme,
         LocalTintTheme provides tintTheme,
     ) {

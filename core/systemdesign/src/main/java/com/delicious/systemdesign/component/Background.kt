@@ -29,7 +29,6 @@ fun RecipesBackground(
         modifier = modifier.fillMaxSize(),
     ) {
         CompositionLocalProvider(
-            LocalLayoutDirection provides LayoutDirection.Rtl,
             LocalAbsoluteTonalElevation provides 0.dp) {
             content()
         }

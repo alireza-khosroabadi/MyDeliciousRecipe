@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.delicious.di"
+    namespace = "com.delicious.homeDI"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

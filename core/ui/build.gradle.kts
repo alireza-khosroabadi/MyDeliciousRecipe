@@ -24,6 +24,7 @@ dependencies {
         api(tracing.ktx)
         implementation(window.manager)
         implementation(navigation.compose)
+        api(compose.ui.util)
 
         debugApi(compose.ui.tooling)
     }
