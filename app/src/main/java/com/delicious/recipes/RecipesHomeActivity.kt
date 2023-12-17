@@ -1,7 +1,10 @@
 package com.delicious.recipes
 
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
@@ -12,6 +15,7 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.delicious.recipes.ui.RecipesApp
 import com.delicious.systemdesign.theme.RecipesTheme
@@ -39,13 +43,33 @@ class RecipesHomeActivity : ComponentActivity() {
         // This also sets up the initial system bar style based on the platform theme
         enableEdgeToEdge()
 
-        val mainViewModel: RecipesHomeViewModel by viewModels()
-
         // add it before setContent
-        installSplashScreen().
-            setKeepOnScreenCondition {
-                mainViewModel.loading.value
+        installSplashScreen().setOnExitAnimationListener{screen ->
+            val zoomX = ObjectAnimator.ofFloat(
+                screen.iconView,
+                View.SCALE_X,
+                1f,
+                0.0f
+            ).apply {
+            interpolator = OvershootInterpolator()
+                duration = 500L
+                doOnEnd { screen.remove() }
             }
+
+            val zoomY = ObjectAnimator.ofFloat(
+                screen.iconView,
+                View.SCALE_Y,
+                1f,
+                0.0f
+            ).apply {
+                interpolator = OvershootInterpolator()
+                duration = 500L
+                doOnEnd { screen.remove() }
+            }
+
+            zoomX.start()
+            zoomY.start()
+        }
 
         setContent {
 

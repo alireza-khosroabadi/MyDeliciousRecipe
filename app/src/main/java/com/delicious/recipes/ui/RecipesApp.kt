@@ -143,9 +143,9 @@ fun RecipesApp(
                 Column(Modifier.fillMaxSize()) {
                     // Show the top app bar on top level destinations.
                     val destination = appState.currentNBottomBarDestination
-                    if (destination != null) {
+//                    if (destination != null) {
                         RecipesTopAppBar(
-                            titleRes = destination.titleTextId,
+                            titleRes = destination?.titleTextId,
                             navigationIconContentDescription = null,
                             actionIconContentDescription = null,
                             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -154,7 +154,7 @@ fun RecipesApp(
                             onActionClick = { onTopBarActionClick = true },
                             onNavigationClick = { showNavRail = showNavRail.not() },
                         )
-                    }
+//                    }
 
                     RecipesNavHost(appState = appState, onShowSnackbar = { message, action ->
                         snackbarHostState.showSnackbar(

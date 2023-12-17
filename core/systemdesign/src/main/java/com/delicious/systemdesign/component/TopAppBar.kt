@@ -26,7 +26,7 @@ import com.delicious.ui.R as uiR
 @Composable
 fun RecipesTopAppBar(
     modifier: Modifier = Modifier,
-    @StringRes titleRes: Int,
+    @StringRes titleRes: Int?,
     navigationIcon: ImageVector = Icons.Default.Menu,
     navigationIconContentDescription: String?,
     actionIcon: Int? = null,
@@ -36,7 +36,7 @@ fun RecipesTopAppBar(
     onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes)) },
+        title = { Text(text = stringResource(id = titleRes?:R.string.untitled)) },
         navigationIcon = {
             IconButton(onClick = onNavigationClick) {
                 Icon(
