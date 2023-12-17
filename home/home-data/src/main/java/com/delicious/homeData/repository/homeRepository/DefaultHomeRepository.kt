@@ -1,6 +1,7 @@
 package com.delicious.homeData.repository.homeRepository
 
 import com.delicious.base.domain.ResultState
+import com.delicious.base.response.NetworkResponse
 import com.delicious.homeData.apiService.HomeApiService
 import com.delicious.homeData.model.randomRecipe.toDomainModel
 import com.delicious.homeDomain.model.randomRecipe.RandomRecipe
@@ -10,21 +11,18 @@ import javax.inject.Inject
 class DefaultHomeRepository @Inject constructor(private val apiService: HomeApiService):HomeRepository {
     override suspend fun getRandomRecipe(): ResultState<List<RandomRecipe>> {
         return try {
-            val response =  apiService.RandomRecpie()
-            return if (response.isSuccessful) {
-                val continents = response.body()?.result
-                    ?.map {
-                        it.toDomainModel()
-                    }.orEmpty()
-                ResultState.Success(continents)
-            } else {
-                ResultState.Failure(
-                    response.errorBody().toString()
-                        .ifEmpty { "Something went wrong" }
+            when (val response = apiService.RandomRecpie()) {
+                is NetworkResponse.Error -> ResultState.Failure(response.code, response.message)
+                is NetworkResponse.Exception -> ResultState.Exception(response.throwable)
+                is NetworkResponse.Success -> ResultState.Success(
+                    response.data?.result
+                        ?.map {
+                            it.toDomainModel()
+                        }.orEmpty()
                 )
             }
-        } catch (exception: Exception) {
-            ResultState.Exception(exception)
+        }catch(e: Exception) {
+            ResultState.Exception(e)
         }
     }
 }

@@ -42,6 +42,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         dependencies {
             add("testImplementation", kotlin("test"))
             add("androidTestImplementation", kotlin("test"))
+            add("testImplementation" , libs.findBundle("test").get())
         }
     }
 }
