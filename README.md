@@ -31,7 +31,7 @@ In the context of your Android project's structure, the "home" directory represe
     - The "domain" module contains the business logic and rules specific to the "home" feature. It encapsulates the use cases, business rules, and any domain-related logic without being concerned about the implementation details.
 
 3. **home-data:**
-    - This module deals with data-related operations for the "home" feature. It includes data sources, repositories, and any data-related logic needed to retrieve or manipulate data for the "home" screen.
+    - This module deals with data-related operations for the "home" feature. It includes data sources, repositories implementation, and any data-related logic needed to retrieve or manipulate data for the "home" screen.
 
 4. **home-di:**
     - The "di" stands for Dependency Injection. This module manages the dependency injection for the "home" feature. It includes the setup for Hilt (the DI framework you mentioned in your skills) and provides the necessary dependencies for the UI, domain, and data layers within the "home" feature.
