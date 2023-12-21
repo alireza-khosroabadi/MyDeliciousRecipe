@@ -49,8 +49,8 @@ fun HomeScreen(
     ) {
         when (homeUiState) {
             HomeUiState.Loading -> Text(text = "LOADING")
-            is HomeUiState.ErrorMessage -> Text((homeUiState as HomeUiState.ErrorMessage).error)
-            is HomeUiState.randomRecipes -> RandomRecipeList(data = (homeUiState as HomeUiState.randomRecipes).data)
+            is HomeUiState.Error -> Text((homeUiState as HomeUiState.Error).errorMessage)
+            is HomeUiState.RandomRecipes -> RandomRecipeList(data = (homeUiState as HomeUiState.RandomRecipes).data)
         }
     }
 }

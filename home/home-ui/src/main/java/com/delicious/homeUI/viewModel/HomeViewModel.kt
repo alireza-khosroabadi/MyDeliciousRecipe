@@ -3,11 +3,8 @@ package com.delicious.homeUI.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.delicious.base.domain.ResultState
-import com.delicious.homeDomain.model.randomRecipe.RandomRecipe
 import com.delicious.homeDomain.useCase.RandomRecipeUseCase
-import com.delicious.ui.dispatcher.DispatcherModule
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -26,13 +23,12 @@ class HomeViewModel @Inject constructor(
         .map { result ->
             when (result) {
                 is ResultState.Exception -> {
-                    result.error.printStackTrace()
-                    HomeUiState.ErrorMessage(result.error.message.orEmpty())
+                    HomeUiState.Error(errorCode = 0,errorMessage = result.error.message.orEmpty())
                 }
 
-                is ResultState.Failure -> HomeUiState.ErrorMessage(result.error)
+                is ResultState.Failure -> HomeUiState.Error(errorCode = result.code, errorMessage = result.error)
 
-                is ResultState.Success -> HomeUiState.randomRecipes(result.data)
+                is ResultState.Success -> HomeUiState.RandomRecipes(result.data)
             }
         }
         .stateIn(
