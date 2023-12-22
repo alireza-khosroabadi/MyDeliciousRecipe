@@ -3,7 +3,7 @@ package com.delicious.homeDomain.useCase
 import com.delicious.base.domain.ResultState
 import com.delicious.homeDomain.repository.homeRepository.HomeRepository
 import com.delicious.homeDomain.useCase.fakeRepositoryResponse.fakeRandomRecipeErrorResult
-import com.delicious.homeDomain.useCase.fakeRepositoryResponse.fakeRandomRecipeSuccessResult
+import com.delicious.homeDomain.useCase.fakeRepositoryResponse.fakePopularRecipeSuccessResult
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -18,7 +18,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 @RunWith(MockitoJUnitRunner::class)
-class RandomRecipeUseCaseTest {
+class PopularRecipeUseCaseTest {
 
     private val testScope = TestScope(UnconfinedTestDispatcher())
 
@@ -36,7 +36,7 @@ class RandomRecipeUseCaseTest {
     @Test
     fun `fetch home random recipe should return success`() = testScope.runTest {
         //Given
-        whenever(homeRepository.getRandomRecipe()).thenReturn(fakeRandomRecipeSuccessResult)
+        whenever(homeRepository.getRandomRecipe()).thenReturn(fakePopularRecipeSuccessResult)
 
         // When
         val result = randomRecipeUseCase()

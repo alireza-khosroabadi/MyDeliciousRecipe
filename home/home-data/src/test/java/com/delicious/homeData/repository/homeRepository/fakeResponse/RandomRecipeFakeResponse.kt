@@ -1,8 +1,8 @@
 package com.delicious.homeData.repository.homeRepository.fakeResponse
 
 import com.delicious.base.response.NetworkResponse
-import com.delicious.homeData.model.randomRecipe.BaseRecipeRandomResponse
-import com.delicious.homeData.model.randomRecipe.RandomRecipeResponse
+import com.delicious.homeData.model.popularRecipe.BaseRecipeRandomResponse
+import com.delicious.homeData.model.popularRecipe.RandomRecipeResponse
 
 
 val fakeRandomRecipeSuccessResponse = NetworkResponse.Success(BaseRecipeRandomResponse(result = listOf(

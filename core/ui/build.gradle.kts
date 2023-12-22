@@ -25,6 +25,7 @@ dependencies {
         implementation(window.manager)
         implementation(navigation.compose)
         api(compose.ui.util)
+        api(compose.foundation)
 
         debugApi(compose.ui.tooling)
     }
