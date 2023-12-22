@@ -1,7 +1,7 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 package com.delicious.systemdesign.component
 
-import android.R
+
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -19,8 +19,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import com.delicious.ui.R
 import com.delicious.ui.preview.ThemePreviews
-import com.delicious.ui.R as uiR
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,7 +36,7 @@ fun RecipesTopAppBar(
     onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes?:R.string.untitled)) },
+        title = { Text(text = stringResource(id = titleRes?: R.string.home)) },
         navigationIcon = {
             IconButton(onClick = onNavigationClick) {
                 Icon(
@@ -67,7 +67,7 @@ fun RecipesTopAppBar(
 @Composable
 private fun RecipesTopAppBarPreview() {
     RecipesTopAppBar(
-        titleRes = R.string.untitled,
+        titleRes = R.string.home,
         navigationIcon = Icons.Default.Menu,
         navigationIconContentDescription = "Navigation icon",
         actionIcon = null,
