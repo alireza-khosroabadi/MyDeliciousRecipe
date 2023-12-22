@@ -82,6 +82,9 @@ fun RecipesApp(
 
     displayType = displayType(windowSizeClass, foldingDeviceState)
 
+    val destination = appState.currentNBottomBarDestination
+
+
 
     RecipesBackground {
         val snackbarHostState = remember { SnackbarHostState() }
@@ -117,6 +120,20 @@ fun RecipesApp(
                     modifier = Modifier.testTag("RecipesBottomBar"),
                 )
             },
+            topBar = {
+                if (destination != null) {
+                    RecipesTopAppBar(
+                        titleRes = destination.titleTextId,
+                        navigationIconContentDescription = null,
+                        actionIconContentDescription = null,
+                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                            containerColor = Color.Transparent,
+                        ),
+                        onActionClick = { onTopBarActionClick = true },
+                        onNavigationClick = { showNavRail = showNavRail.not() },
+                    )
+                }
+            }
         ) { paddingValues ->
             Row(
                 Modifier
@@ -142,28 +159,15 @@ fun RecipesApp(
 
                 Column(Modifier.fillMaxSize()) {
                     // Show the top app bar on top level destinations.
-                    val destination = appState.currentNBottomBarDestination
-//                    if (destination != null) {
-                        RecipesTopAppBar(
-                            titleRes = destination?.titleTextId,
-                            navigationIconContentDescription = null,
-                            actionIconContentDescription = null,
-                            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                                containerColor = Color.Transparent,
-                            ),
-                            onActionClick = { onTopBarActionClick = true },
-                            onNavigationClick = { showNavRail = showNavRail.not() },
-                        )
-//                    }
 
-                    RecipesNavHost(appState = appState, onShowSnackbar = { message, action ->
-                        snackbarHostState.showSnackbar(
-                            message = message,
-                            actionLabel = action,
-                            duration = SnackbarDuration.Short,
-                        ) == SnackbarResult.ActionPerformed
-                    })
-                }
+                        RecipesNavHost(appState = appState, onShowSnackbar = { message, action ->
+                            snackbarHostState.showSnackbar(
+                                message = message,
+                                actionLabel = action,
+                                duration = SnackbarDuration.Short,
+                            ) == SnackbarResult.ActionPerformed
+                        })
+                    }
             }
         }
 
