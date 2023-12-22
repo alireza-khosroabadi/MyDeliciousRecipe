@@ -5,7 +5,7 @@ import com.delicious.homeDomain.useCase.RandomRecipeUseCase
 import com.delicious.homeUI.viewModel.fake.exception
 import com.delicious.homeUI.viewModel.fake.fakeRandomRecipeExceptionResult
 import com.delicious.homeUI.viewModel.fake.fakeRandomRecipesFailureResult
-import com.delicious.homeUI.viewModel.fake.fakeRandomRecipesSuccessResult
+import com.delicious.homeUI.viewModel.fake.fakePopularRecipesSuccessResult
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -48,7 +48,7 @@ class HomeViewModelTest {
     @Test
     fun `should return list of random recipe if successful`() = runTest {
         // Given
-        whenever(randomRecipeUseCase.invoke()).thenReturn(fakeRandomRecipesSuccessResult)
+        whenever(randomRecipeUseCase.invoke()).thenReturn(fakePopularRecipesSuccessResult)
 
         val collectJob = launch(UnconfinedTestDispatcher()){homeViewModel.randomRecipeUiState.collect()}
 
@@ -57,7 +57,7 @@ class HomeViewModelTest {
 
         //Assert
         assertIs<HomeUiState.RandomRecipes>(item)
-        assertEquals(item.data.size , fakeRandomRecipesSuccessResult.data.size)
+        assertEquals(item.data.size , fakePopularRecipesSuccessResult.data.size)
 
         collectJob.cancel()
     }

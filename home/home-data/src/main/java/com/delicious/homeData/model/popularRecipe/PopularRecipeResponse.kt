@@ -1,6 +1,6 @@
-package com.delicious.homeData.model.randomRecipe
+package com.delicious.homeData.model.popularRecipe
 
-import com.delicious.homeDomain.model.randomRecipe.RandomRecipe
+import com.delicious.homeDomain.model.popularRecipe.PopularRecipe
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -22,8 +22,8 @@ data class RandomRecipeResponse(
 )
 
 
-fun RandomRecipeResponse.toDomainModel():RandomRecipe =
-    RandomRecipe(id = id?: 0,
+fun RandomRecipeResponse.toDomainModel():PopularRecipe =
+    PopularRecipe(id = id?: 0,
         title = title.orEmpty(),
         image = image.orEmpty(),
         imageType = imageType.orEmpty())

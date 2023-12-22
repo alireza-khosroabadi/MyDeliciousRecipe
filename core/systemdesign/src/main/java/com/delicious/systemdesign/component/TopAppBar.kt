@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import com.delicious.systemdesign.theme.AccentColor
 import com.delicious.ui.R
 import com.delicious.ui.preview.ThemePreviews
 
@@ -36,13 +37,13 @@ fun RecipesTopAppBar(
     onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes?: R.string.home)) },
+        title = { Text(text = stringResource(id = titleRes?: R.string.home), color = AccentColor) },
         navigationIcon = {
             IconButton(onClick = onNavigationClick) {
                 Icon(
-                    imageVector = navigationIcon, //ImageVector.vectorResource(id = navigationIcon),
+                    imageVector = navigationIcon,
                     contentDescription = navigationIconContentDescription,
-                    tint = Color.Unspecified
+                    tint = AccentColor
                 )
             }
         },
@@ -52,7 +53,7 @@ fun RecipesTopAppBar(
                     Icon(
                         imageVector = ImageVector.vectorResource(id = actionIcon),
                         contentDescription = actionIconContentDescription,
-                        tint = Color.Unspecified
+                        tint = AccentColor
                     )
                 }
             }

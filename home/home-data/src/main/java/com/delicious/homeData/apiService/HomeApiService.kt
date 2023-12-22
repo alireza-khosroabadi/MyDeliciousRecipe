@@ -1,7 +1,7 @@
 package com.delicious.homeData.apiService
 
 import com.delicious.base.response.NetworkResponse
-import com.delicious.homeData.model.randomRecipe.BaseRecipeRandomResponse
+import com.delicious.homeData.model.popularRecipe.BaseRecipeRandomResponse
 import retrofit2.http.GET
 
 interface HomeApiService {

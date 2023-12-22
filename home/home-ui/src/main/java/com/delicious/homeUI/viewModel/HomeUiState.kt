@@ -1,33 +1,17 @@
 package com.delicious.homeUI.viewModel
 
-import com.delicious.homeDomain.model.randomRecipe.RandomRecipe
+import com.delicious.homeDomain.model.mealType.MealType
+import com.delicious.homeDomain.model.popularRecipe.PopularRecipe
 
 
-sealed interface HomeUiState {
-    val isLoading: Boolean
-    val hasError: Boolean
-    val errorMessage: String
+sealed interface PopularRecipeUiState{
+    data object Loading:PopularRecipeUiState
+    data class Error(val errorCode: Int, val message: String):PopularRecipeUiState
+    data class PopularRecipes(val data: List<PopularRecipe>,):PopularRecipeUiState
+}
 
-    data object Loading : HomeUiState {
-        override val isLoading: Boolean
-            get() = true
-        override val hasError: Boolean
-            get() = false
-        override val errorMessage: String
-            get() = ""
-    }
-
-    data class Error(
-        val errorCode: Int,
-        override val errorMessage: String,
-        override val isLoading: Boolean = false,
-        override val hasError: Boolean = true
-    ) : HomeUiState
-
-    data class RandomRecipes(
-        val data: List<RandomRecipe>,
-        override val isLoading: Boolean = false,
-        override val hasError: Boolean = false,
-        override val errorMessage: String = ""
-    ) : HomeUiState
+sealed interface MealTypeUiState{
+    data object Loading:MealTypeUiState
+    data class Error(val errorCode: Int, val message: String):MealTypeUiState
+    data class MealTypes(val mealTypes: List<MealType>): MealTypeUiState
 }

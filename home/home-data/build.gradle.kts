@@ -19,6 +19,7 @@ dependencies {
         core.apply {
             implementation(network)
             implementation(base)
+            implementation(ui)
         }
         implementation(projects.home.homeDomain)
     }

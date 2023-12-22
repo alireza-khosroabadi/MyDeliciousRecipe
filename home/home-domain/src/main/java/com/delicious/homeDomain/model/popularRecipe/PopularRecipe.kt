@@ -1,6 +1,6 @@
-package com.delicious.homeDomain.model.randomRecipe
+package com.delicious.homeDomain.model.popularRecipe
 
-data class RandomRecipe(
+data class PopularRecipe(
     val id: Int,
     val title: String,
     val image: String,
