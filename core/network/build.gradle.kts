@@ -39,7 +39,7 @@ dependencies {
         api(kotlinx.serialization.json)
         implementation(logging.interceptor)
         api(retrofit)
-        implementation(chucker)
+//        implementation(chucker)
         api(retrofit.kotlin.serialization)
 
         testImplementation(junit)
