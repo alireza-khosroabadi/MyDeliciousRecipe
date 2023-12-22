@@ -31,7 +31,6 @@ dependencies {
 
     with(projects) {
         implementation(core.base)
-//        implementation(core.common)
     }
 
     libs.apply {
@@ -39,8 +38,6 @@ dependencies {
         api(kotlinx.serialization.json)
         implementation(logging.interceptor)
         api(retrofit)
-        //todo add chucker after project complete
-//        implementation(chucker)
         api(retrofit.kotlin.serialization)
 
         testImplementation(junit)
