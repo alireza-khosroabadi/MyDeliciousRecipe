@@ -39,6 +39,7 @@ dependencies {
         api(kotlinx.serialization.json)
         implementation(logging.interceptor)
         api(retrofit)
+        //todo add chucker after project complete
 //        implementation(chucker)
         api(retrofit.kotlin.serialization)
 
