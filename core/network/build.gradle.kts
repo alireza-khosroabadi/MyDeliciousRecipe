@@ -39,7 +39,6 @@ dependencies {
         implementation(logging.interceptor)
         api(retrofit)
         api(retrofit.kotlin.serialization)
-
         testImplementation(junit)
         androidTestImplementation(junit.ext)
     }
