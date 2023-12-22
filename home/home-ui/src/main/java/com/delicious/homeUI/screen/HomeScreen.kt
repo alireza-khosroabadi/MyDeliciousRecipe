@@ -57,7 +57,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.size(16.dp))
         Text(
             text = "Popular recipes",
-            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black)
+            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black))
 
     }
 }
