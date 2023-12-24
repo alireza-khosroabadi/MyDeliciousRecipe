@@ -1,7 +1,7 @@
 package com.delicious.homeUI.viewModel
 
 import com.delicious.base.testing.MainDispatcherRule
-import com.delicious.homeDomain.useCase.RandomRecipeUseCase
+import com.delicious.homeDomain.useCase.PopularRecipeUseCase
 import com.delicious.homeUI.viewModel.fake.exception
 import com.delicious.homeUI.viewModel.fake.fakeRandomRecipeExceptionResult
 import com.delicious.homeUI.viewModel.fake.fakeRandomRecipesFailureResult
@@ -28,32 +28,32 @@ class HomeViewModelTest {
     val dispatcherRule = MainDispatcherRule()
 
     @Mock
-    private lateinit var randomRecipeUseCase: RandomRecipeUseCase
+    private lateinit var popularRecipeUseCase: PopularRecipeUseCase
 
     private lateinit var homeViewModel: HomeViewModel
 
     @Before
     fun setUp() {
-        homeViewModel = HomeViewModel(randomRecipeUseCase)
+        homeViewModel = HomeViewModel(popularRecipeUseCase)
     }
 
 
     @Test
     fun `testing default values of ui state`()=runTest {
 
-        assertIs<HomeUiState.Loading>(homeViewModel.randomRecipeUiState.value)
-        assertTrue(homeViewModel.randomRecipeUiState.value.isLoading)
+        assertIs<HomeUiState.Loading>(homeViewModel.popularRecipeUiState.value)
+        assertTrue(homeViewModel.popularRecipeUiState.value.isLoading)
     }
 
     @Test
     fun `should return list of random recipe if successful`() = runTest {
         // Given
-        whenever(randomRecipeUseCase.invoke()).thenReturn(fakePopularRecipesSuccessResult)
+        whenever(popularRecipeUseCase.invoke()).thenReturn(fakePopularRecipesSuccessResult)
 
-        val collectJob = launch(UnconfinedTestDispatcher()){homeViewModel.randomRecipeUiState.collect()}
+        val collectJob = launch(UnconfinedTestDispatcher()){homeViewModel.popularRecipeUiState.collect()}
 
         //Collect
-        val item = homeViewModel.randomRecipeUiState.value
+        val item = homeViewModel.popularRecipeUiState.value
 
         //Assert
         assertIs<HomeUiState.RandomRecipes>(item)
@@ -65,12 +65,12 @@ class HomeViewModelTest {
     @Test
     fun `should return list of random recipe if failure`() = runTest {
         // Given
-        whenever(randomRecipeUseCase.invoke()).thenReturn(fakeRandomRecipesFailureResult)
+        whenever(popularRecipeUseCase.invoke()).thenReturn(fakeRandomRecipesFailureResult)
 
-        val collectJob = launch(UnconfinedTestDispatcher()){homeViewModel.randomRecipeUiState.collect()}
+        val collectJob = launch(UnconfinedTestDispatcher()){homeViewModel.popularRecipeUiState.collect()}
 
         //Collect
-        val item = homeViewModel.randomRecipeUiState.value
+        val item = homeViewModel.popularRecipeUiState.value
 
         //Assert
         assertIs<HomeUiState.Error>(item)
@@ -84,12 +84,12 @@ class HomeViewModelTest {
     @Test
     fun `should return error of random recipe if exception`() = runTest {
         // Given
-        whenever(randomRecipeUseCase.invoke()).thenReturn(fakeRandomRecipeExceptionResult)
+        whenever(popularRecipeUseCase.invoke()).thenReturn(fakeRandomRecipeExceptionResult)
 
-        val collectJob = launch(UnconfinedTestDispatcher()){homeViewModel.randomRecipeUiState.collect()}
+        val collectJob = launch(UnconfinedTestDispatcher()){homeViewModel.popularRecipeUiState.collect()}
 
         //Collect
-        val item = homeViewModel.randomRecipeUiState.value
+        val item = homeViewModel.popularRecipeUiState.value
 
         //Assert
         assertIs<HomeUiState.Error>(item)

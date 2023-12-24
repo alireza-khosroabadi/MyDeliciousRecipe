@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalLayoutApi::class)
+
 package com.delicious.homeUI.screen
 
 import androidx.compose.foundation.Image
@@ -5,10 +7,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,20 +42,20 @@ fun MealTypeTableScreen(mealTypeUiState: MealTypeUiState) {
 }
 
 
-
 @Composable
-fun MealTypeTable(mealTypes:List<MealType>) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3)){
-        items(mealTypes.size){index ->
-            MealTypeItem(mealType = mealTypes[index])
+fun MealTypeTable(mealTypes: List<MealType>) {
+
+    FlowRow(modifier = Modifier.fillMaxWidth(1f),
+        maxItemsInEachRow = 3) {
+        mealTypes.forEach {
+            MealTypeItem(mealType = it)
         }
     }
 }
 
 @Composable
 fun MealTypeItem(mealType: MealType) {
-    val modifier= Modifier
+    val modifier = Modifier
         .padding(8.dp)
         .shadow(
             elevation = 8.dp,
@@ -65,9 +68,11 @@ fun MealTypeItem(mealType: MealType) {
             shape = MaterialTheme.shapes.small
         )
 
-    Column (modifier = modifier,
+    Column(
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center){
+        verticalArrangement = Arrangement.Center
+    ) {
         Image(
             painter = painterResource(id = mealType.icon),
             contentDescription = null,
@@ -91,7 +96,7 @@ fun Loading(modifier: Modifier) {
 
 @ThemePreviews
 @Composable
-fun PreviewMealType(@PreviewParameter(MealTypeProvider::class) mealTypes: List<MealType>){
+fun PreviewMealType(@PreviewParameter(MealTypeProvider::class) mealTypes: List<MealType>) {
     RecipesTheme {
         MealTypeTable(mealTypes = mealTypes)
     }
@@ -99,7 +104,7 @@ fun PreviewMealType(@PreviewParameter(MealTypeProvider::class) mealTypes: List<M
 
 @ThemePreviews
 @Composable
-fun PreviewMealTypeItem(@PreviewParameter(MealTypeProvider::class) mealTypes: List<MealType>){
+fun PreviewMealTypeItem(@PreviewParameter(MealTypeProvider::class) mealTypes: List<MealType>) {
     RecipesTheme {
         MealTypeItem(mealType = mealTypes[0])
     }

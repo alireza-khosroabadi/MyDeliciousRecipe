@@ -39,10 +39,10 @@ class DefaultHomeRepositoryTest{
     @Test
     fun `should return success when calling get random recipes`() = testScope.runTest {
         // Given
-        whenever(homeApiService.RandomRecpie()).thenReturn(fakeRandomRecipeSuccessResponse)
+        whenever(homeApiService.popularRecipes()).thenReturn(fakeRandomRecipeSuccessResponse)
 
         // When
-        val response =  defaultHomeRepository.getRandomRecipe()
+        val response =  defaultHomeRepository.getPopularRecipe()
 
         // Assert
         assertThat(response).isInstanceOf(ResultState.Success::class.java)
@@ -55,13 +55,13 @@ class DefaultHomeRepositoryTest{
         // Given
         val exception = RuntimeException("Error response body")
 
-        whenever(homeApiService.RandomRecpie()).thenAnswer { throw exception }
+        whenever(homeApiService.popularRecipes()).thenAnswer { throw exception }
 
         // When
-        val result = defaultHomeRepository.getRandomRecipe()
+        val result = defaultHomeRepository.getPopularRecipe()
 
         // Then
-        verify(homeApiService).RandomRecpie()
+        verify(homeApiService).popularRecipes()
         assertTrue(result is ResultState.Exception)
         val exceptionResult = result as ResultState.Exception
         assertEquals(exception.message, exceptionResult.error.message)
@@ -71,13 +71,13 @@ class DefaultHomeRepositoryTest{
     @Test
     fun `should return failure when calling get random recipes and server return error`() = testScope.runTest {
         // Given
-        whenever(homeApiService.RandomRecpie()).thenReturn(error401Response)
+        whenever(homeApiService.popularRecipes()).thenReturn(error401Response)
 
         // When
-        val result = defaultHomeRepository.getRandomRecipe()
+        val result = defaultHomeRepository.getPopularRecipe()
 
         // Then
-        verify(homeApiService).RandomRecpie()
+        verify(homeApiService).popularRecipes()
         assertTrue(result is ResultState.Failure)
         val errorResult = result as ResultState.Failure
         assertEquals(error401Response.code, errorResult.code)
