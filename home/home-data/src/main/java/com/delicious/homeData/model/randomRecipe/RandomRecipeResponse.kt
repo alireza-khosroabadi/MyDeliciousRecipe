@@ -4,26 +4,20 @@ import com.delicious.homeDomain.model.randomRecipe.RandomRecipe
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
-data class BaseRecipeRandomResponse(
-    @SerialName("results"       ) val result       : List<RandomRecipeResponse>,
-    @SerialName("offset"       ) var offset       : Int?               = null,
-    @SerialName("number"       ) var number       : Int?               = null,
-    @SerialName("totalResults" ) var totalResults : Int?               = null
+data class BaseRandomRecipeResponse(
+    @SerialName("recipes") val recipes:List<RandomRecipeResponse>
 )
-
 @Serializable
 data class RandomRecipeResponse(
-    @SerialName("id"        ) var id        : Int?    = null,
-    @SerialName("title"     ) var title     : String? = null,
-    @SerialName("image"     ) var image     : String? = null,
-    @SerialName("imageType" ) var imageType : String? = null
+    @SerialName("id") val id: Int,
+    @SerialName("title") val title: String,
+    @SerialName("readyInMinutes") val readyInMinutes: Int,
+    @SerialName("image") val image: String?,
+    @SerialName("healthScore") val healthScore: Int
 )
 
 
-fun RandomRecipeResponse.toDomainModel():RandomRecipe =
-    RandomRecipe(id = id?: 0,
-        title = title.orEmpty(),
-        image = image.orEmpty(),
-        imageType = imageType.orEmpty())
+fun RandomRecipeResponse.toDomainModel(): RandomRecipe = RandomRecipe(
+    id, title, readyInMinutes, image.orEmpty(), healthScore
+)

@@ -12,4 +12,6 @@ java {
 
 dependencies {
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.coroutines.test)
+    implementation(libs.junit4)
 }

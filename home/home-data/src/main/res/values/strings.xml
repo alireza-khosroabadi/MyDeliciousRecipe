@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meal_type_main_dishes">Main dishes</string>
+    <string name="meal_type_salad">salad\n</string>
+    <string name="meal_type_fast_food">Fastfood</string>
+    <string name="meal_type_soup">Soup</string>
+    <string name="meal_type_dessert">Dessert</string>
+    <string name="meal_type_beverage">Beverage</string>
+</resources>

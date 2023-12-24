@@ -1,7 +1,7 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 package com.delicious.systemdesign.component
 
-import android.R
+
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -19,8 +19,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import com.delicious.systemdesign.theme.AccentColor
+import com.delicious.ui.R
 import com.delicious.ui.preview.ThemePreviews
-import com.delicious.ui.R as uiR
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,13 +37,13 @@ fun RecipesTopAppBar(
     onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes?:R.string.untitled)) },
+        title = { Text(text = stringResource(id = titleRes?: R.string.home), color = AccentColor) },
         navigationIcon = {
             IconButton(onClick = onNavigationClick) {
                 Icon(
-                    imageVector = navigationIcon, //ImageVector.vectorResource(id = navigationIcon),
+                    imageVector = navigationIcon,
                     contentDescription = navigationIconContentDescription,
-                    tint = Color.Unspecified
+                    tint = AccentColor
                 )
             }
         },
@@ -52,7 +53,7 @@ fun RecipesTopAppBar(
                     Icon(
                         imageVector = ImageVector.vectorResource(id = actionIcon),
                         contentDescription = actionIconContentDescription,
-                        tint = Color.Unspecified
+                        tint = AccentColor
                     )
                 }
             }
@@ -67,7 +68,7 @@ fun RecipesTopAppBar(
 @Composable
 private fun RecipesTopAppBarPreview() {
     RecipesTopAppBar(
-        titleRes = R.string.untitled,
+        titleRes = R.string.home,
         navigationIcon = Icons.Default.Menu,
         navigationIconContentDescription = "Navigation icon",
         actionIcon = null,

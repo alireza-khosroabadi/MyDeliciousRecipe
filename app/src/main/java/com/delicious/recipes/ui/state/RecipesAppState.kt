@@ -12,6 +12,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import androidx.tracing.trace
+import com.delicious.homeUI.navigation.homeRoute
 import com.delicious.homeUI.navigation.navigateToHome
 import com.delicious.recipes.ui.bottomBar.BottomNavBarDestination
 import com.delicious.utility.network.NetworkMonitor
@@ -55,7 +56,7 @@ class RecipesAppState(
 
     val currentNBottomBarDestination: BottomNavBarDestination?
         @Composable get() = when (currentDestination?.route) {
-//            routehomeRoute -> BottomNavBarDestination.HOME
+            homeRoute -> BottomNavBarDestination.HOME
 //            contactsRoute -> BottomNavBarDestination.CONTACTS
 //            paymentCalenderRoute -> BottomNavBarDestination.PAYMENTCALENDER
             else -> null

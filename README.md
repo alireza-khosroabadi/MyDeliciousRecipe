@@ -72,7 +72,3 @@ Feel free to explore the individual feature modules and core components to under
 Contributions to the project are welcome! If you encounter issues, have suggestions, or want to contribute new features, please open an issue or submit a pull request.
 
 Happy coding! 🚀
-
----
-
-This README provides a high-level overview. For more detailed documentation on specific modules or components, refer to the individual README files within each module.
