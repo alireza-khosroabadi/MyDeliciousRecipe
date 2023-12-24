@@ -25,21 +25,21 @@ class PopularRecipeUseCaseTest {
     @Mock
     lateinit var homeRepository : HomeRepository
 
-    lateinit var randomRecipeUseCase: RandomRecipeUseCase
+    lateinit var popularRecipeUseCase: PopularRecipeUseCase
 
     @Before
     fun setUp() {
-        randomRecipeUseCase = RandomRecipeUseCase(homeRepository)
+        popularRecipeUseCase = PopularRecipeUseCase(homeRepository)
     }
 
 
     @Test
     fun `fetch home random recipe should return success`() = testScope.runTest {
         //Given
-        whenever(homeRepository.getRandomRecipe()).thenReturn(fakePopularRecipeSuccessResult)
+        whenever(homeRepository.getPopularRecipe()).thenReturn(fakePopularRecipeSuccessResult)
 
         // When
-        val result = randomRecipeUseCase()
+        val result = popularRecipeUseCase()
 
         //Assert
         assertTrue(result is ResultState.Success)
@@ -52,10 +52,10 @@ class PopularRecipeUseCaseTest {
     fun `fetch home random recipe should return Failure when call server return error`() = testScope.runTest {
 
         //Given
-        whenever(homeRepository.getRandomRecipe()).thenReturn(fakeRandomRecipeErrorResult)
+        whenever(homeRepository.getPopularRecipe()).thenReturn(fakeRandomRecipeErrorResult)
 
         // When
-        val result = randomRecipeUseCase()
+        val result = popularRecipeUseCase()
 
         //Assert
         assertFalse(result.isSuccess)
@@ -67,10 +67,10 @@ class PopularRecipeUseCaseTest {
 
         //GIven
         val exception = java.lang.NullPointerException()
-        whenever(homeRepository.getRandomRecipe()).thenReturn(ResultState.Exception(exception))
+        whenever(homeRepository.getPopularRecipe()).thenReturn(ResultState.Exception(exception))
 
         //When
-        val result = randomRecipeUseCase()
+        val result = popularRecipeUseCase()
 
         //Assert
         assertFalse(result.isSuccess)

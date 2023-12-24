@@ -6,15 +6,15 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class BaseRecipeRandomResponse(
-    @SerialName("results"       ) val result       : List<RandomRecipeResponse>,
+data class BasePopularRecipeResponse(
+    @SerialName("results"       ) val result       : List<PopularRecipeResponse>,
     @SerialName("offset"       ) var offset       : Int?               = null,
     @SerialName("number"       ) var number       : Int?               = null,
     @SerialName("totalResults" ) var totalResults : Int?               = null
 )
 
 @Serializable
-data class RandomRecipeResponse(
+data class PopularRecipeResponse(
     @SerialName("id"        ) var id        : Int?    = null,
     @SerialName("title"     ) var title     : String? = null,
     @SerialName("image"     ) var image     : String? = null,
@@ -22,7 +22,7 @@ data class RandomRecipeResponse(
 )
 
 
-fun RandomRecipeResponse.toDomainModel():PopularRecipe =
+fun PopularRecipeResponse.toDomainModel():PopularRecipe =
     PopularRecipe(id = id?: 0,
         title = title.orEmpty(),
         image = image.orEmpty(),
