@@ -3,6 +3,7 @@ package com.delicious.homeData.repository.homeRepository
 import com.delicious.base.domain.ResultState
 import com.delicious.homeData.apiService.HomeApiService
 import com.delicious.homeData.repository.homeRepository.fakeResponse.error401Response
+import com.delicious.homeData.repository.homeRepository.fakeResponse.fakePopularRecipeSuccessResponse
 import com.delicious.homeData.repository.homeRepository.fakeResponse.fakeRandomRecipeSuccessResponse
 import com.google.common.truth.Truth.assertThat
 import junit.framework.TestCase.assertEquals
@@ -37,9 +38,9 @@ class DefaultHomeRepositoryTest{
 
 
     @Test
-    fun `should return success when calling get random recipes`() = testScope.runTest {
+    fun `should return success when calling get popular recipes`() = testScope.runTest {
         // Given
-        whenever(homeApiService.popularRecipes()).thenReturn(fakeRandomRecipeSuccessResponse)
+        whenever(homeApiService.popularRecipes()).thenReturn(fakePopularRecipeSuccessResponse)
 
         // When
         val response =  defaultHomeRepository.getPopularRecipe()
@@ -50,7 +51,7 @@ class DefaultHomeRepositoryTest{
 
     @Test
     @Throws(RuntimeException::class)
-    fun `should return exception when calling get random recipes and exception happen`() = testScope.runTest {
+    fun `should return exception when calling get popular recipes and exception happen`() = testScope.runTest {
 
         // Given
         val exception = RuntimeException("Error response body")
@@ -69,7 +70,7 @@ class DefaultHomeRepositoryTest{
 
 
     @Test
-    fun `should return failure when calling get random recipes and server return error`() = testScope.runTest {
+    fun `should return failure when calling get popular recipes and server return error`() = testScope.runTest {
         // Given
         whenever(homeApiService.popularRecipes()).thenReturn(error401Response)
 
@@ -83,4 +84,47 @@ class DefaultHomeRepositoryTest{
         assertEquals(error401Response.code, errorResult.code)
         assertEquals(error401Response.message, errorResult.error)
     }
+
+
+    @Test
+    fun `should return success when calling get random recipes`() = testScope.runTest {
+        // Given
+        whenever(homeApiService.randomRecipes()).thenReturn(fakeRandomRecipeSuccessResponse)
+
+        // When
+        val response =  defaultHomeRepository.getRandomRecipe()
+
+        // Assert
+        assertThat(response).isInstanceOf(ResultState.Success::class.java)
+    }
+
+
+    @Test
+    fun `should return failure when calling get random recipes and server return error`() = testScope.runTest {
+        // Given
+        whenever(homeApiService.randomRecipes()).thenReturn(error401Response)
+
+        // When
+        val result = defaultHomeRepository.getRandomRecipe()
+
+        // Then
+        verify(homeApiService).randomRecipes()
+        assertTrue(result is ResultState.Failure)
+        val errorResult = result as ResultState.Failure
+        assertEquals(error401Response.code, errorResult.code)
+        assertEquals(error401Response.message, errorResult.error)
+    }
+
+
+
+    @Test
+    fun `get meal types return success`() = testScope.runTest{
+
+        // When
+        val result = defaultHomeRepository.getMealType()
+
+        assertTrue(result.isSuccess)
+        assertEquals(6 , (result as ResultState.Success).data.size)
+    }
+
 }
