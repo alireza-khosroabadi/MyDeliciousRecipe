@@ -33,7 +33,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply {
             apply("com.android.library")
             apply("org.jetbrains.kotlin.android")
-            apply("recipes.android.detekt")
+//            apply("recipes.android.detekt")
             apply("recipes.android.ktlint")
         }
     }
