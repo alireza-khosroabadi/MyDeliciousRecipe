@@ -206,7 +206,7 @@ recipes-android-library-compose = { id = "recipes.android.library.compose", vers
 recipes-android-hilt = { id = "recipes.android.hilt", version = "unspecified" }
 recipes-android-feature = { id = "recipes.android.feature", version = "unspecified" }
 recipes-android-room = { id = "recipes.android.room", version = "unspecified" }
-recipes-android-detekt = { id = "recipes.android.detekt", version = "unspecified" }
+#recipes-android-detekt = { id = "recipes.android.detekt", version = "unspecified" }
 recipes-android-ktlint = { id = "recipes.android.ktlint", version = "unspecified" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
 

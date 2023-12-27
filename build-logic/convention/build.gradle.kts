@@ -55,10 +55,10 @@ gradlePlugin {
             id = "recipes.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
-        register("androidDetekt") {
-            id = "recipes.android.detekt"
-            implementationClass = "AndroidDetektConventionPlugin"
-        }
+//        register("androidDetekt") {
+//            id = "recipes.android.detekt"
+//            implementationClass = "AndroidDetektConventionPlugin"
+//        }
         register("androidKtlint") {
             id = "recipes.android.ktlint"
             implementationClass = "AndroidKotlinterConventionPlugin"
