@@ -217,4 +217,15 @@ test = [
     "kotlinx-coroutines-test",
     "turbine",
     "mockito",
-    "truth",]
+    "truth"]
+
+androidTest = [
+    "junit",
+    "kotlinx-coroutines-test",
+    "turbine",
+    "mockito",
+    "truth",
+    "androidx-test-core",
+    "junit-ext",
+    "androidx-test-rules"
+]
