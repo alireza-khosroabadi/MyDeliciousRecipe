@@ -2,6 +2,7 @@ package com.delicious.homeUI.screen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +37,10 @@ import kotlin.math.absoluteValue
 
 
 @Composable
-fun PopularRecipeScreen(popularRecipeState: PopularRecipeUiState) {
+fun PopularRecipeScreen(
+    popularRecipeState: PopularRecipeUiState,
+    onRecipeClick: (recipeId: Int) -> Unit
+) {
     val modifier = Modifier
         .fillMaxWidth()
         .height(250.dp)
@@ -49,7 +53,7 @@ fun PopularRecipeScreen(popularRecipeState: PopularRecipeUiState) {
             Text(popularRecipeState.message)
         }
         is PopularRecipeUiState.PopularRecipes -> {
-            PopularRecipeList(data = popularRecipeState.data , modifier = modifier)
+            PopularRecipeList(data = popularRecipeState.data , modifier = modifier, onRecipeClick=onRecipeClick)
         }
     }
 }
@@ -57,7 +61,7 @@ fun PopularRecipeScreen(popularRecipeState: PopularRecipeUiState) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PopularRecipeList(modifier: Modifier = Modifier, data: List<PopularRecipe>) {
+fun PopularRecipeList(modifier: Modifier = Modifier, data: List<PopularRecipe>, onRecipeClick: (recipeId: Int) -> Unit) {
     val pagerState = rememberPagerState(pageCount = { data.size })
     HorizontalPager(
         modifier = modifier,
@@ -87,16 +91,20 @@ fun PopularRecipeList(modifier: Modifier = Modifier, data: List<PopularRecipe>) 
                 defaultElevation = 6.dp
             )
         ) {
-            CardItem(recipe = data[page])
+            CardItem(recipe = data[page], onRecipeClick = onRecipeClick)
         }
     }
 }
 
 
 @Composable
-fun CardItem(modifier: Modifier = Modifier, recipe: PopularRecipe) {
+fun CardItem(
+    modifier: Modifier = Modifier,
+    recipe: PopularRecipe,
+    onRecipeClick: (recipeId: Int) -> Unit
+) {
     val gradiantBackground = Brush.verticalGradient(listOf(Color(0xAA111111), Color(0x44111111)))
-    Box(modifier = modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize().clickable { onRecipeClick(recipe.id) }) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
                 .data(recipe.image)
@@ -131,6 +139,6 @@ fun CardItem(modifier: Modifier = Modifier, recipe: PopularRecipe) {
 @Composable
 fun PreviewCardItem(@PreviewParameter(RandomRecipeProvider::class) item:List<PopularRecipe>) {
     RecipesTheme {
-        PopularRecipeList(data = item)
+        PopularRecipeList(data = item){}
     }
 }

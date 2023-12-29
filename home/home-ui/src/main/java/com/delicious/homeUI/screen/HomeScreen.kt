@@ -22,7 +22,8 @@ import com.delicious.homeUI.viewModel.HomeViewModel
 
 @Composable
 fun HomeScreen(
-    homeViewModel: HomeViewModel = hiltViewModel()
+    homeViewModel: HomeViewModel = hiltViewModel(),
+    navigateToRecipe: (recipeId: Int) -> Unit
 ) {
     val popularRecipeUiState by homeViewModel.popularRecipeUiState.collectAsStateWithLifecycle()
     val mealTypeUiState by homeViewModel.mealTypeUiState.collectAsStateWithLifecycle()
@@ -39,7 +40,7 @@ fun HomeScreen(
             text = stringResource(R.string.home_screen_promo_recipe),
             style = MaterialTheme.typography.titleLarge.copy(color = Color.Black)
         )
-        PopularRecipeScreen(popularRecipeState = popularRecipeUiState)
+        PopularRecipeScreen(popularRecipeState = popularRecipeUiState, onRecipeClick= navigateToRecipe)
         Spacer(modifier = Modifier.size(16.dp))
         MealTypeTableScreen(mealTypeUiState = mealTypeUiState)
         Spacer(modifier = Modifier.size(16.dp))

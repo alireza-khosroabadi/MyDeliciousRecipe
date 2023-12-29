@@ -55,6 +55,7 @@ class DefaultHomeRepository @Inject constructor(private val apiService: HomeApiS
                 )
             }
         }catch(e: Exception) {
+            e.printStackTrace()
             ResultState.Exception(e)
         }
     }
