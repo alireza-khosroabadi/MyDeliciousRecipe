@@ -5,6 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.delicious.homeUI.navigation.homeRoute
 import com.delicious.homeUI.navigation.homeScreen
+import com.delicious.recipeUI.navigation.navigateToRecipe
+import com.delicious.recipeUI.navigation.recipeScreen
 import com.delicious.recipes.ui.state.RecipesAppState
 
 
@@ -21,6 +23,7 @@ fun RecipesNavHost(
         startDestination = startDestination,
         modifier = modifier,
     ) {
-        homeScreen(onShowSnackbar)
+        homeScreen(onShowSnackbar, navigateToRecipe = navController::navigateToRecipe)
+        recipeScreen(onShowSnackbar)
     }
 }

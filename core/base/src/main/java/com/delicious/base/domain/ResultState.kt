@@ -19,7 +19,11 @@ sealed class ResultState<out T> {
     /**
      * Contains an error if it's a failure.
      */
-    data class Exception(val error: Throwable) : ResultState<Nothing>()
+    data class Exception(val error: Throwable) : ResultState<Nothing>(){
+        init {
+            error.printStackTrace()
+        }
+    }
 
     /**
      * True if the result is a success, false otherwise.

@@ -40,6 +40,7 @@ dependencies {
             implementation(ui)
         }
         implementation(home.homeUi)
+        implementation(recipe.recipeUi)
     }
 
     libs.apply {

@@ -10,14 +10,14 @@ data class BaseRandomRecipeResponse(
 )
 @Serializable
 data class RandomRecipeResponse(
-    @SerialName("id") val id: Int,
-    @SerialName("title") val title: String,
-    @SerialName("readyInMinutes") val readyInMinutes: Int,
-    @SerialName("image") val image: String?,
-    @SerialName("healthScore") val healthScore: Int
+    @SerialName("id") val id: Int? = null,
+    @SerialName("title") val title: String? = null,
+    @SerialName("readyInMinutes") val readyInMinutes: Int? = null,
+    @SerialName("image") val image: String? = null,
+    @SerialName("healthScore") val healthScore: Int? = null
 )
 
 
 fun RandomRecipeResponse.toDomainModel(): RandomRecipe = RandomRecipe(
-    id, title, readyInMinutes, image.orEmpty(), healthScore
+    id?:0, title.orEmpty(), readyInMinutes?:0, image.orEmpty(), healthScore?:0
 )
