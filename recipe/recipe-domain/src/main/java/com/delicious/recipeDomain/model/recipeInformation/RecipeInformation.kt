@@ -1,0 +1,42 @@
+package com.delicious.recipeDomain.model.recipeInformation
+
+import com.delicious.base.model.domain.baseDomainModel.DomainModel
+
+data class RecipeInformation(
+    var id                       : Int,
+    var title                    : String,
+    var image                    : String,
+    var imageType                : String,
+    var servings                 : Int,
+    var readyInMinutes           : Int,
+    var license                  : String,
+    var sourceName               : String,
+    var sourceUrl                : String,
+    var spoonacularSourceUrl     : String,
+    var healthScore              : Int,
+    var spoonacularScore         : Int,
+    var pricePerServing          : Double,
+    var analyzedInstructions     : ArrayList<String>,
+    var cheap                    : Boolean,
+    var creditsText              : String,
+    var cuisines                 : ArrayList<String>,
+    var dairyFree                : Boolean,
+    var diets                    : ArrayList<String>,
+    var gaps                     : String,
+    var glutenFree               : Boolean,
+    var instructions             : String,
+    var ketogenic                : Boolean,
+    var lowFodmap                : Boolean,
+    var occasions                : ArrayList<String>,
+    var sustainable              : Boolean,
+    var vegan                    : Boolean,
+    var vegetarian               : Boolean,
+    var veryHealthy              : Boolean,
+    var veryPopular              : Boolean,
+    var whole30                  : Boolean,
+    var weightWatcherSmartPoints : Int,
+    var dishTypes                : ArrayList<String>,
+    var extendedIngredients      : ArrayList<ExtendedIngredients>,
+    var summary                  : String,
+    var winePairing              : WinePairing
+): DomainModel
