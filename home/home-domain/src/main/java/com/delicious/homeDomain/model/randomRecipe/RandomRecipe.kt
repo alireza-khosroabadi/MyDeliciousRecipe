@@ -7,5 +7,5 @@ data class RandomRecipe(
     val image: String,
     val healthScore: Int,
     val sourceUrl: String,
-    val isFavorite:Boolean = false
+    var isFavorite:Boolean = false
 )

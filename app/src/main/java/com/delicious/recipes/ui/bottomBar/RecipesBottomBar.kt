@@ -1,13 +1,16 @@
 package com.delicious.recipes.ui.bottomBar
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
@@ -20,13 +23,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.delicious.systemdesign.theme.AccentColor
+import com.delicious.systemdesign.theme.PrimaryBackgroundColor
 
 
 @Composable
 internal fun RecipesBottomBar(
     modifier: Modifier = Modifier,
     destinations: List<BottomNavBarDestination>,
-    destinationsWithUnreadResources: Set<BottomNavBarDestination> = emptySet(),
     onNavigateToDestination: (BottomNavBarDestination) -> Unit,
     currentDestination: NavDestination?,
 ) {
@@ -34,25 +37,25 @@ internal fun RecipesBottomBar(
         modifier = modifier,
     ) {
         destinations.forEach { destination ->
-            val hasUnread = destinationsWithUnreadResources.contains(destination)
             val selected = currentDestination.isSelectedDestinationInHierarchy(destination)
             RecipesNavigationBarItem(
                 selected = selected,
                 onClick = { onNavigateToDestination(destination) },
                 icon = {
                     Icon(
+                        modifier= modifier.size(32.dp),
                         painter = painterResource(destination.unselectedIcon),
                         contentDescription = null,
                     )
                 },
                 selectedIcon = {
                     Icon(
+                        modifier= modifier.size(32.dp),
                         painter = painterResource(id = destination.selectedIcon),
                         contentDescription = null,
                     )
                 },
-                label = { Text(stringResource(id = destination.iconTextId)) },
-                modifier = if (hasUnread) Modifier.notificationDot() else Modifier,
+//                label = { Text(stringResource(id = destination.iconTextId)) },
             )
         }
     }
@@ -67,10 +70,10 @@ fun RecipesNavigationBar(
 ) {
     NavigationBar(
         modifier = modifier,
+        containerColor = MaterialTheme.colorScheme.surface,
         contentColor = RecipesNavigationDefaults.navigationContentColor(),
         tonalElevation = 8.dp,
         content = content,
-        containerColor = MaterialTheme.colorScheme.surface,
     )
 }
 
@@ -84,7 +87,7 @@ fun RowScope.RecipesNavigationBarItem(
     selectedIcon: @Composable () -> Unit = icon,
     enabled: Boolean = true,
     label: @Composable (() -> Unit)? = null,
-    alwaysShowLabel: Boolean = true,
+    alwaysShowLabel: Boolean = false,
 ) {
     NavigationBarItem(
         selected = selected,
@@ -104,25 +107,6 @@ fun RowScope.RecipesNavigationBarItem(
     )
 }
 
-private fun Modifier.notificationDot(): Modifier =
-    composed {
-        val tertiaryColor = MaterialTheme.colorScheme.tertiary
-        drawWithContent {
-            drawContent()
-            drawCircle(
-                tertiaryColor,
-                radius = 5.dp.toPx(),
-                // This is based on the dimensions of the NavigationBar's "indicator pill";
-                // however, its parameters are private, so we must depend on them implicitly
-                // (NavigationBarTokens.ActiveIndicatorWidth = 64.dp)
-                center = center + Offset(
-                    64.dp.toPx() * .45f,
-                    32.dp.toPx() * -.45f - 6.dp.toPx(),
-                ),
-            )
-        }
-    }
-
 private fun NavDestination?.isSelectedDestinationInHierarchy(destination: BottomNavBarDestination) =
     this?.hierarchy?.any {
         it.route?.contains(destination.name, true) ?: false
@@ -131,10 +115,10 @@ private fun NavDestination?.isSelectedDestinationInHierarchy(destination: Bottom
 
 object RecipesNavigationDefaults {
     @Composable
-    fun navigationContentColor() = MaterialTheme.colorScheme.onSurfaceVariant
+    fun navigationContentColor() = PrimaryBackgroundColor
 
     @Composable
-    fun navigationUnselectedContentColor() = Color.White
+    fun navigationUnselectedContentColor() = Color.Unspecified.copy(alpha = 0.5f)
 
     @Composable
     fun navigationSelectedItemColor() = Color.Unspecified
@@ -143,5 +127,5 @@ object RecipesNavigationDefaults {
     fun navigationSelectedTextColor() = AccentColor
 
     @Composable
-    fun navigationIndicatorColor() = MaterialTheme.colorScheme.surface
+    fun navigationIndicatorColor() = Color.White
 }

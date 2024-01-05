@@ -5,6 +5,7 @@ import com.delicious.base.response.NetworkResponse
 import com.delicious.datastore.dataSource.FavoriteRecipeDataSource
 import com.delicious.homeData.R
 import com.delicious.homeData.apiService.HomeApiService
+import com.delicious.homeData.mapper.favoriteRecipe.toFavoriteRecipePreferences
 import com.delicious.homeData.model.popularRecipe.toDomainModel
 import com.delicious.homeData.model.randomRecipe.toDomainModel
 import com.delicious.homeDomain.model.mealType.MealType
@@ -69,7 +70,7 @@ class DefaultHomeRepository
             }
         }
 
-        suspend fun updateFavoriteRecipe(recipe: RandomRecipe) {
-//            favoriteRecipeDataSource.updateFavoriteRecipes()
+        override suspend fun updateFavoriteRecipe(recipe: RandomRecipe) {
+            favoriteRecipeDataSource.updateFavoriteRecipes(recipe.toFavoriteRecipePreferences())
         }
     }

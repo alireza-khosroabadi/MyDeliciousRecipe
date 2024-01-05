@@ -72,10 +72,10 @@ fun RecipesTheme(
     // Color scheme
     val colorScheme = when {
         androidTheme -> if (darkTheme) LightDefaultColorScheme else DarkDefaultColorScheme
-        !disableDynamicTheming && supportsDynamicTheming() -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+//        !disableDynamicTheming && supportsDynamicTheming() -> {
+//            val context = LocalContext.current
+//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+//        }
 
         else -> if (darkTheme) DarkDefaultColorScheme else LightDefaultColorScheme
     }

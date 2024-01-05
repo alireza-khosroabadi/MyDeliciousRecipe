@@ -12,11 +12,11 @@ class FavoriteRecipeDataSource
             dataStore.updateData {
                 if (it.favoriteRecipeListList.any { it.id == recipePreferences.id }) {
                     FavoriteRecipeListPreferences.newBuilder(it)
-                        .addFavoriteRecipeList(recipePreferences)
+                        .removeFavoriteRecipeList(it.favoriteRecipeListList.indexOf(recipePreferences))
                         .build()
                 } else {
                     FavoriteRecipeListPreferences.newBuilder(it)
-                        .removeFavoriteRecipeList(it.favoriteRecipeListList.indexOf(recipePreferences))
+                        .addFavoriteRecipeList(recipePreferences)
                         .build()
                 }
             }

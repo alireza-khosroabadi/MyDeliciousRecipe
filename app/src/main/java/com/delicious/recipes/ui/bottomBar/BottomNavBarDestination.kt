@@ -3,18 +3,23 @@ package com.delicious.recipes.ui.bottomBar
 import com.delicious.recipes.R
 import com.delicious.ui.R as uiR
 
-
 enum class BottomNavBarDestination(
     val selectedIcon: Int,
     val unselectedIcon: Int,
     val iconTextId: Int,
-    val titleTextId: Int
+    val titleTextId: Int,
 ) {
     HOME(
-        selectedIcon = uiR.drawable.ic_home,
-        unselectedIcon = uiR.drawable.ic_home,
+        selectedIcon = uiR.drawable.ic_home_selected,
+        unselectedIcon = uiR.drawable.ic_home_unselected,
         iconTextId = uiR.string.home,
         titleTextId = R.string.app_name,
+    ),
+    FAVORITE(
+        selectedIcon = uiR.drawable.ic_favorite_selected,
+        unselectedIcon = uiR.drawable.ic_favorite_unselected,
+        iconTextId = uiR.string.favorites,
+        titleTextId = uiR.string.favorites,
     ),
 //    CONTACTS(
 //        selectedIcon = uiR.drawable.ic_bottombar_contacts_selected,
