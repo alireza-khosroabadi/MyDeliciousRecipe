@@ -20,8 +20,8 @@ dependencies {
             api(network)
             implementation(base)
             implementation(ui)
+            implementation(datastore)
         }
         implementation(projects.home.homeDomain)
     }
-
 }

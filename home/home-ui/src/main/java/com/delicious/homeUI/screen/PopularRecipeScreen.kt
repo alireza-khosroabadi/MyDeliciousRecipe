@@ -29,7 +29,7 @@ import androidx.compose.ui.util.lerp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.delicious.homeDomain.model.popularRecipe.PopularRecipe
-import com.delicious.homeUI.screen.previewParams.RandomRecipeProvider
+import com.delicious.homeUI.screen.previewParams.PopularRecipeProvider
 import com.delicious.homeUI.viewModel.PopularRecipeUiState
 import com.delicious.systemdesign.theme.RecipesTheme
 import com.delicious.ui.preview.ThemePreviews
@@ -137,7 +137,7 @@ fun CardItem(
 
 @ThemePreviews
 @Composable
-fun PreviewCardItem(@PreviewParameter(RandomRecipeProvider::class) item:List<PopularRecipe>) {
+fun PreviewCardItem(@PreviewParameter(PopularRecipeProvider::class) item:List<PopularRecipe>) {
     RecipesTheme {
         PopularRecipeList(data = item){}
     }

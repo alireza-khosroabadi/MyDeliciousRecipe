@@ -16,9 +16,8 @@ android {
 
 dependencies {
     projects.apply {
-
+        implementation(core.datastore)
         implementation(home.homeDomain)
         implementation(home.homeData)
     }
-
 }

@@ -5,5 +5,7 @@ data class RandomRecipe(
     val title: String,
     val readyInMinutes: Int,
     val image: String,
-    val healthScore: Int
+    val healthScore: Int,
+    val sourceUrl: String,
+    val isFavorite:Boolean = false
 )
