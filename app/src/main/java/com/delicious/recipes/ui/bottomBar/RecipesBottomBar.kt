@@ -70,7 +70,7 @@ fun RecipesNavigationBar(
 ) {
     NavigationBar(
         modifier = modifier,
-        containerColor = MaterialTheme.colorScheme.surface,
+        containerColor = MaterialTheme.colorScheme.surface.copy(0.01f),
         contentColor = RecipesNavigationDefaults.navigationContentColor(),
         tonalElevation = 8.dp,
         content = content,
@@ -118,7 +118,7 @@ object RecipesNavigationDefaults {
     fun navigationContentColor() = PrimaryBackgroundColor
 
     @Composable
-    fun navigationUnselectedContentColor() = Color.Unspecified.copy(alpha = 0.5f)
+    fun navigationUnselectedContentColor() = Color.Unspecified.copy(alpha = 0.3f)
 
     @Composable
     fun navigationSelectedItemColor() = Color.Unspecified
