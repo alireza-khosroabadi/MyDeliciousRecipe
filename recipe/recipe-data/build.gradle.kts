@@ -17,7 +17,7 @@ android {
 dependencies {
     projects.apply {
         core.apply {
-            implementation(network)
+            api(network)
             implementation(base)
         }
         implementation(projects.recipe.recipeDomain)

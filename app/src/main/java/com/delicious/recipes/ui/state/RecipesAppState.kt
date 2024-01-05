@@ -103,6 +103,7 @@ class RecipesAppState(
             when (bottomNavBarDestination) {
                 BottomNavBarDestination.HOME -> navController.navigateToHome(bottomBarNavOptions)
 //            }
+                BottomNavBarDestination.FAVORITE -> {}
             }
         }
 

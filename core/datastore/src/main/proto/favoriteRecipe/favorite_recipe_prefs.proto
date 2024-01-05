@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.delicious.datastore.model.favoriteRecipe";
+option java_multiple_files = true;
+
+message FavoriteRecipePreferences{
+   int32 id = 1;
+   string title = 2;
+   int32 ready_in_minutes = 3;
+   string image = 4;
+   int32 health_score = 5;
+   string source_url = 6;
+
+}
+
+message FavoriteRecipeListPreferences{
+   repeated FavoriteRecipePreferences favoriteRecipeList = 1;
+}

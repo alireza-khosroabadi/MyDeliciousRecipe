@@ -1,4 +1,4 @@
-package com.delicious.homeData.di
+package com.delicious.homeDI
 
 import com.delicious.homeData.apiService.HomeApiService
 import dagger.Module
