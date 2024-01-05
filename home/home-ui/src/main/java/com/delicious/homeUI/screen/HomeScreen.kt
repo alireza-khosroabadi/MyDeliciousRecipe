@@ -22,31 +22,38 @@ import com.delicious.homeUI.viewModel.HomeViewModel
 
 @Composable
 fun HomeScreen(
-    homeViewModel: HomeViewModel = hiltViewModel()
+    homeViewModel: HomeViewModel = hiltViewModel(),
+    navigateToRecipe: (recipeId: Int) -> Unit,
 ) {
     val popularRecipeUiState by homeViewModel.popularRecipeUiState.collectAsStateWithLifecycle()
     val mealTypeUiState by homeViewModel.mealTypeUiState.collectAsStateWithLifecycle()
     val randomRecipeUiState by homeViewModel.randomRecipeUiState.collectAsStateWithLifecycle()
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState())
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
     ) {
         Text(
             modifier = Modifier.padding(bottom = 16.dp),
             text = stringResource(R.string.home_screen_promo_recipe),
-            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black)
+            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black),
         )
-        PopularRecipeScreen(popularRecipeState = popularRecipeUiState)
+        PopularRecipeScreen(
+            popularRecipeState = popularRecipeUiState,
+            onRecipeClick = navigateToRecipe,
+        )
         Spacer(modifier = Modifier.size(16.dp))
         MealTypeTableScreen(mealTypeUiState = mealTypeUiState)
         Spacer(modifier = Modifier.size(16.dp))
         Text(
             text = "Popular recipes",
-            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black))
-        RandomRecipe(randomRecipeUiState = randomRecipeUiState)
-
+            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black),
+        )
+        RandomRecipe(randomRecipeUiState = randomRecipeUiState, onFavoriteClick = {
+            homeViewModel.favoriteRecipe(it)
+        })
     }
 }

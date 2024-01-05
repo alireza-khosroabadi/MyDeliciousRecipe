@@ -2,7 +2,7 @@ package com.delicious.homeDomain.useCase
 
 import com.delicious.base.domain.ResultState
 import com.delicious.homeDomain.repository.homeRepository.HomeRepository
-import com.delicious.homeDomain.useCase.fakeRepositoryResponse.fakeRandomRecipeErrorResult
+import com.delicious.homeDomain.useCase.fakeRepositoryResponse.fakePopularRecipeErrorResult
 import com.delicious.homeDomain.useCase.fakeRepositoryResponse.fakePopularRecipeSuccessResult
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -34,7 +34,7 @@ class PopularRecipeUseCaseTest {
 
 
     @Test
-    fun `fetch home random recipe should return success`() = testScope.runTest {
+    fun `fetch home popular recipe should return success`() = testScope.runTest {
         //Given
         whenever(homeRepository.getPopularRecipe()).thenReturn(fakePopularRecipeSuccessResult)
 
@@ -49,10 +49,10 @@ class PopularRecipeUseCaseTest {
 
 
     @Test
-    fun `fetch home random recipe should return Failure when call server return error`() = testScope.runTest {
+    fun `fetch home popular recipe should return Failure when call server return error`() = testScope.runTest {
 
         //Given
-        whenever(homeRepository.getPopularRecipe()).thenReturn(fakeRandomRecipeErrorResult)
+        whenever(homeRepository.getPopularRecipe()).thenReturn(fakePopularRecipeErrorResult)
 
         // When
         val result = popularRecipeUseCase()
@@ -63,7 +63,7 @@ class PopularRecipeUseCaseTest {
     }
 
     @Test
-    fun `fetch home random recipe should return Exception when exception happen`() = testScope.runTest {
+    fun `fetch home popular recipe should return Exception when exception happen`() = testScope.runTest {
 
         //GIven
         val exception = java.lang.NullPointerException()

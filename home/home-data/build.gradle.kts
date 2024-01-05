@@ -17,11 +17,11 @@ android {
 dependencies {
     projects.apply {
         core.apply {
-            implementation(network)
+            api(network)
             implementation(base)
             implementation(ui)
+            implementation(datastore)
         }
         implementation(projects.home.homeDomain)
     }
-
 }

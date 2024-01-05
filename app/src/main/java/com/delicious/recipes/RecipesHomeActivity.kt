@@ -44,32 +44,32 @@ class RecipesHomeActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         // add it before setContent
-        installSplashScreen().setOnExitAnimationListener{screen ->
-            val zoomX = ObjectAnimator.ofFloat(
-                screen.iconView,
-                View.SCALE_X,
-                1f,
-                0.0f
-            ).apply {
-            interpolator = OvershootInterpolator()
-                duration = 500L
-                doOnEnd { screen.remove() }
-            }
-
-            val zoomY = ObjectAnimator.ofFloat(
-                screen.iconView,
-                View.SCALE_Y,
-                1f,
-                0.0f
-            ).apply {
-                interpolator = OvershootInterpolator()
-                duration = 500L
-                doOnEnd { screen.remove() }
-            }
-
-            zoomX.start()
-            zoomY.start()
-        }
+//        installSplashScreen().setOnExitAnimationListener{screen ->
+//            val zoomX = ObjectAnimator.ofFloat(
+//                screen.iconView,
+//                View.SCALE_X,
+//                1f,
+//                0.0f
+//            ).apply {
+//            interpolator = OvershootInterpolator()
+//                duration = 500L
+//                doOnEnd { screen.remove() }
+//            }
+//
+//            val zoomY = ObjectAnimator.ofFloat(
+//                screen.iconView,
+//                View.SCALE_Y,
+//                1f,
+//                0.0f
+//            ).apply {
+//                interpolator = OvershootInterpolator()
+//                duration = 500L
+//                doOnEnd { screen.remove() }
+//            }
+//
+//            zoomX.start()
+//            zoomY.start()
+//        }
 
         setContent {
 

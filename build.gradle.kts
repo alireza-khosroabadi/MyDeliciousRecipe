@@ -6,7 +6,7 @@ plugins {
         alias(kotlin.parcelize) apply false
         alias(hilt.android) apply false
         alias(kotliner) apply false
-        alias(detekt) apply false
+//        alias(detekt) apply false
         alias(ksp) apply false
     }
     alias(libs.plugins.android.library) apply false

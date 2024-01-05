@@ -12,4 +12,5 @@ interface HomeRepository {
 
     suspend fun getRandomRecipe(): ResultState<List<RandomRecipe>>
 
+    suspend fun updateFavoriteRecipe(recipe: RandomRecipe)
 }

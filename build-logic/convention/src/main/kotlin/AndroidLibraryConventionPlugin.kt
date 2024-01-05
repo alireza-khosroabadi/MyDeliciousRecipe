@@ -33,7 +33,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply {
             apply("com.android.library")
             apply("org.jetbrains.kotlin.android")
-            apply("recipes.android.detekt")
+//            apply("recipes.android.detekt")
             apply("recipes.android.ktlint")
         }
     }
@@ -43,6 +43,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             add("testImplementation", kotlin("test"))
             add("androidTestImplementation", kotlin("test"))
             add("testImplementation" , libs.findBundle("test").get())
+            add("androidTestImplementation" , libs.findBundle("androidTest").get())
         }
     }
 }

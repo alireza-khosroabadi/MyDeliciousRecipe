@@ -26,7 +26,7 @@ dependencies {
         implementation(navigation.compose)
         api(compose.ui.util)
         api(compose.foundation)
-
+        api(compose.constraintlayout)
         debugApi(compose.ui.tooling)
     }
 

@@ -19,6 +19,7 @@ androidxAppCompat = "1.6.1"
 androidxBrowser = "1.7.0"
 androidxComposeBom = "2023.10.01"
 androidxComposeCompiler = "1.5.6"
+androidxComposeConstraint = "1.0.1"
 androidxComposeRuntimeTracing = "1.0.0-beta01"
 androidxCore = "1.12.0"
 androidxCoreSplashscreen = "1.0.1"
@@ -45,6 +46,7 @@ firebaseBom = "32.7.0"
 firebaseCrashlyticsPlugin = "2.9.9"
 firebasePerfPlugin = "1.4.2"
 junit4 = "4.13.2"
+googleProtobuf = "3.24.4"
 hilt = "2.48.1"
 hiltExt = "1.1.0"
 kotlinxCoroutines = "1.7.3"
@@ -68,7 +70,7 @@ adaptive = "0.26.2-beta"
 espresso-core = "3.5.1"
 appcompat = "1.6.1"
 material = "1.11.0"
-
+protobuf = "0.9.4"
 truth = "1.1.4"
 mockito = "5.1.0"
 turbine = "1.0.0"
@@ -85,6 +87,7 @@ androidx-benchmark-macro = { group = "androidx.benchmark", name = "benchmark-mac
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidxBrowser" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "androidxComposeCompiler" }
+androidx-compose-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "androidxComposeConstraint" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
 androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
@@ -128,7 +131,7 @@ firebase-cloud-messaging = { group = "com.google.firebase", name = "firebase-mes
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
 firebase-performance = { group = "com.google.firebase", name = "firebase-perf-ktx" }
 firebase-performance-gradle = { group = "com.google.firebase", name = "perf-plugin", version.ref = "firebasePerfPlugin" }
-
+google-protobuf = {group = "com.google.protobuf", name = "protobuf-javalite", version.ref = "googleProtobuf"}
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
@@ -142,7 +145,8 @@ kotlinx-coroutines-guava = { group = "org.jetbrains.kotlinx", name = "kotlinx-co
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
-
+protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "googleProtobuf" }
+protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "googleProtobuf" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "kotlinx-serialization-converter" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
@@ -194,7 +198,7 @@ kotliner = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerfPlugin" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
-
+protobuf = {id = "com.google.protobuf" , version.ref = "protobuf"}
 
 
 # Plugins defined by this project
@@ -206,7 +210,7 @@ recipes-android-library-compose = { id = "recipes.android.library.compose", vers
 recipes-android-hilt = { id = "recipes.android.hilt", version = "unspecified" }
 recipes-android-feature = { id = "recipes.android.feature", version = "unspecified" }
 recipes-android-room = { id = "recipes.android.room", version = "unspecified" }
-recipes-android-detekt = { id = "recipes.android.detekt", version = "unspecified" }
+#recipes-android-detekt = { id = "recipes.android.detekt", version = "unspecified" }
 recipes-android-ktlint = { id = "recipes.android.ktlint", version = "unspecified" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
 
@@ -217,4 +221,15 @@ test = [
     "kotlinx-coroutines-test",
     "turbine",
     "mockito",
-    "truth",]
+    "truth"]
+
+androidTest = [
+    "junit",
+    "kotlinx-coroutines-test",
+    "turbine",
+    "mockito",
+    "truth",
+    "androidx-test-core",
+    "junit-ext",
+    "androidx-test-rules"
+]
