@@ -3,10 +3,11 @@ plugins {
         alias(library)
         alias(hilt)
     }
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
-    namespace = "com.delicious.homeDomain"
+    namespace = "com.delicious.favoriteData"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -16,7 +17,11 @@ android {
 dependencies {
     projects.apply {
         core.apply {
+            api(network)
             implementation(base)
+            implementation(ui)
+            implementation(datastore)
         }
+        implementation(projects.favoriteRecipe.favoriteDomain)
     }
 }
