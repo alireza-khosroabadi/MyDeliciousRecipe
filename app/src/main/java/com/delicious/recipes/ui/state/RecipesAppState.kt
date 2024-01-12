@@ -12,6 +12,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import androidx.tracing.trace
+import com.delicious.favoriteRecipeUI.navigation.favoriteRecipeRoute
+import com.delicious.favoriteRecipeUI.navigation.navigateToFavoriteRecipe
 import com.delicious.homeUI.navigation.homeRoute
 import com.delicious.homeUI.navigation.navigateToHome
 import com.delicious.recipes.ui.bottomBar.BottomNavBarDestination
@@ -57,8 +59,7 @@ class RecipesAppState(
     val currentNBottomBarDestination: BottomNavBarDestination?
         @Composable get() = when (currentDestination?.route) {
             homeRoute -> BottomNavBarDestination.HOME
-//            contactsRoute -> BottomNavBarDestination.CONTACTS
-//            paymentCalenderRoute -> BottomNavBarDestination.PAYMENTCALENDER
+            favoriteRecipeRoute -> BottomNavBarDestination.FAVORITE
             else -> null
         }
 
@@ -85,7 +86,6 @@ class RecipesAppState(
      * @param bottomNavBarDestination: The destination the app needs to navigate to.
      */
     fun navigateToBottomBarDestination(bottomNavBarDestination: BottomNavBarDestination) {
-        trace("Navigation: ${bottomNavBarDestination.name}") {
             val bottomBarNavOptions = navOptions {
                 // Pop up to the start destination of the graph to
                 // avoid building up a large stack of destinations
@@ -102,9 +102,7 @@ class RecipesAppState(
 
             when (bottomNavBarDestination) {
                 BottomNavBarDestination.HOME -> navController.navigateToHome(bottomBarNavOptions)
-//            }
-                BottomNavBarDestination.FAVORITE -> {}
-            }
+                BottomNavBarDestination.FAVORITE -> navController.navigateToFavoriteRecipe(bottomBarNavOptions)
         }
 
     }
