@@ -47,6 +47,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
 import com.delicious.homeDomain.model.randomRecipe.RandomRecipe
@@ -123,11 +124,11 @@ fun RandomRecipeItem(
             overflow = TextOverflow.Ellipsis,
             modifier =
                 Modifier
-                    .fillMaxWidth()
                     .padding(start = 8.dp, top = 8.dp, end = 8.dp)
                     .constrainAs(title) {
                         top.linkTo(parent.top)
                         start.linkTo(image.end)
+                        width = Dimension.fillToConstraints
                     },
         )
 

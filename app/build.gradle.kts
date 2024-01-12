@@ -2,7 +2,7 @@ import com.delicious.recipes.RecipesBuildType
 
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    libs.plugins.recipes.android.apply{
+    libs.plugins.recipes.android.apply {
         alias(application)
         alias(application.compose)
         alias(hilt)
@@ -11,13 +11,13 @@ plugins {
 
 android {
     namespace = libs.versions.recipesApplicationId.get()
-    defaultConfig{
+    defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
 
-        buildTypes{
+        buildTypes {
             debug {
                 applicationIdSuffix = RecipesBuildType.DEBUG.applicationIdSuffix
             }
@@ -40,6 +40,7 @@ dependencies {
             implementation(ui)
         }
         implementation(home.homeUi)
+        implementation(favoriteRecipe.favoriteUi)
         implementation(recipe.recipeUi)
     }
 

@@ -9,16 +9,16 @@ enum class BottomNavBarDestination(
     val iconTextId: Int,
     val titleTextId: Int,
 ) {
-    HOME(
-        selectedIcon = uiR.drawable.ic_home,
-        unselectedIcon = uiR.drawable.ic_home,
-        iconTextId = uiR.string.home,
-        titleTextId = R.string.app_name,
-    ),
     FAVORITE(
         selectedIcon = uiR.drawable.ic_favorite,
         unselectedIcon = uiR.drawable.ic_favorite,
         iconTextId = uiR.string.favorites,
         titleTextId = uiR.string.favorites,
+    ),
+    HOME(
+        selectedIcon = uiR.drawable.ic_home,
+        unselectedIcon = uiR.drawable.ic_home,
+        iconTextId = uiR.string.home,
+        titleTextId = R.string.app_name,
     ),
 }
